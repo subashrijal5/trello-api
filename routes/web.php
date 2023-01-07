@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Controller::class, 'calculateTotals']);
+Route::get('/', function(){
+    return view('welcome');
+});

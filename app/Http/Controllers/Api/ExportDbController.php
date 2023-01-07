@@ -12,6 +12,9 @@ class ExportDbController extends Controller
         $dumpFile = \Spatie\DbDumper\Databases\Sqlite::create()
             ->setDbName(database_path('database.sqlite'))
             ->dumpToFile('export.sql');
-        return \response()->download($dumpFile);
+            if(!empty($dumpFile)){
+                return \response()->download($dumpFile);
+            }
+            return back();
     }
 }
