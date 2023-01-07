@@ -19,6 +19,6 @@ class AccessTokenMiddleWare
         if (request('access_token') == config('app.access_token')) {
             return $next($request);
         }
-        abort(401, "Access tocken doesn't match");
+        abort(401, "Access token doesn't match");
     }
 }

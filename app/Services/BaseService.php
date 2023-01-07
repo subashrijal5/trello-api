@@ -31,7 +31,7 @@ abstract class BaseService
 
     public function find(int $id): Model
     {
-        return $this->model->findOrFail($id);
+        return $this->model->withTrashed()->findOrFail($id);
     }
     public function delete(int $id): void
     {
