@@ -15,18 +15,7 @@ class TaskService extends BaseService
 
     public function getData(array $filters = []): Collection
     {
-        $query =  $this->model;
-        if (isset($filters['status'])) {
-            if ($filters['status'] == 0) {
-                $query->onlyTrashed();
-            }
-        } else {
-            $query->withTrashed();
-        }
-        unset($filters['status'], $filters['date']);
-        if (count($filters)) {
-            $query->where($filters);
-        }
+        $query =  $this->model->filter($filters);
         return $query->get();
     }
 }
